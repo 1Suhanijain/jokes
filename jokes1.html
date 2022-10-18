@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jokes</title>
+    <link rel="stylesheet" href="jokes1.css">
+</head>
+<body>
+    <div class="container">
+        <h3>Don't laugh challenge</h3>
+        <div id="joke" class="jokee"></div>
+        <button class="btn" id="jokebtn">get another joke</button>
+    </div>
+</body>
+<script>
+   let jokesEL = document.getElementById("joke");
+    let jokesBtn = document.getElementById("jokebtn");
+
+    jokesBtn.addEventListener('click',generatejokes);
+    "tushar"
+    
+      generatejokes();
+    //   function generatejokes(){
+    //     let response = new Promise((resolve,reject)=>{
+    //         let data="";
+    //         if (data == fetch('https://icanhazdadjoke.com')){
+    //             return resolve(data);
+    //         }
+    //         else{
+    //             return reject("you are rejected");
+    //         }
+    //     })
+    //   }
+
+      async function generatejokes(){
+        let config = {
+            headers :{
+                Accept : 'application/json',
+            },
+        }
+
+         let res = await fetch('https://icanhazdadjoke.com',config);
+         let convertinjson = await res.json();
+
+         
+         jokesEL.innerHTML = convertinjson.joke;
+        // .then((response)=>{
+        //      return response.json();
+        // })
+        // .then((result)=>{
+        //     console.log(result)
+
+        //     jokesEL.innerHTML = result.joke ;
+        // })
+    }
+</script>
+</html>
